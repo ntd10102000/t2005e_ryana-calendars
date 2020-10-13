@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head')%>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <%- include('menu')%>
+    <section class="sectional slide1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="breadcrumbb">
+                    <img src="/imgs/Breadcumd.jpg"/>
+                    <div class="breadcrumb_content">
+                        <h1>Product Details</h1>
+                        <a href="/">Home / </a>
+                        <a href="/shop"> Shop </a>
+                        <span class="delimiter">
+                            / <%= sanpham.TenSP%>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sectional slide2">
+        <div class="container">
+            <div class="row">
+                <div class="product-details">
+                    <div class="product_left">
+                        <img src="<%= sanpham.AnhSP%>">
+                    </div>
+                    <div class="product_right">
+                        <div class="name_product">
+                            <h2><%= sanpham.TenSP%></h2>
+                            <div class="star">
+                                <i><div class="box-star"><div class="star" style="width: <%= sanpham.SoSaoTB/5*100%>%;"></div></div></i>
+                                <p>(<%= soluongdanhgia.SoLuongDanhGia%> customer reviews)</p>
+                            </div>
+                            <div class="price"><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sanpham.GiaSP);%></div>
+                        </div>
+                        <hr style="margin-top: 120px">
+                        <div class="check">
+                            <div class="check_icon">
+                                <i class="fas fa-check-circle" style="margin-left: 1px;margin-top: 1px"></i>
+                            </div>
+                            <span>In Stock</span>
+                        </div>
+                        <div class="description">
+                            <p><%= sanpham.MoTaSP%></p>
+                        </div>
+                        <div class="add-to-cart">
+                            <a href="/cart/<%= sanpham.ID%>">ADD TO CART</a>
+                            <a href="#" style="padding: 15px"><i class="far fa-heart" style="font-size: 1.3em;margin-top: 3px"></i></a>
+                        </div>
+                        <hr style="margin-top: 35px">
+                        <div class="product-meta">
+                            <h4>Designer: <a href="/product/<%= sanpham.ID%>"><%= sanpham.TenNhaThietKe%></a></h4>
+                            <h4>Size: <a href="#"><%= sanpham.KichThuocSanPham%></a></h4>
+                            <h4>Category: <a href="#"><%= sanpham.TenDanhMuc%></a></h4>
+                            <h4>Year of manufacture: <a href="#"><%= sanpham.NamSX%></a></h4>
+                            <h4>Share:
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                <a href="#"><i class="fab fa-invision"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="related-products">
+                    <h2 style="">Related Products</h2>
+                    <div style="margin-bottom: 20px" class="h2_gach"></div>
+                    <% sanphamlienquans.map(function (e) { %>
+                    <div class="col-xl-3 new_product">
+                        <div class="img_product">
+                            <img src="<%= e.AnhSP%>" class="image_1"/>
+                            <div class="product_hover">
+                                <img src="<%= e.AnhSP%>" class="image"/>
+                                <div class="product_hover_a">
+                                    <a href="/cart/<%= e.ID%>"><i class="fas fa-cart-arrow-down a"></i></a>
+                                    <a href="/product/<%= e.ID%>"><i class="fas fa-search a"></i></a>
+                                    <a href="#"><i class="far fa-heart a"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/product/<% e.ID%>"><%= e.TenSP%></a>
+                        <h3><i>by</i> <a href="#"> <%= e.TenNhaThietKe%></a></h3>
+                        <p><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(e.GiaSP);%></p>
+                    </div>
+                    <% })%>
+                </div>
+                <div class="reviews">
+                    <h2 style="font-weight: 700;">Reviews</h2>
+                    <div style="margin-bottom: 50px" class="h2_gach"></div>
+                    <% danhgiasanphams.map(function (e) { %>
+                    <div class="review-item">
+                        <div class="avartar">
+                            <i class="far fa-user"></i>
+                        </div>
+                        <div class="comment">
+                            <div class="time_star">
+                                <h3 class="user" style="font-size: 15px;width: 70%;float: left"><%= e.TenNguoiDanhGia%> -<i class="time"> <%= e.NgayGio%></i></h3>
+                                <div class="box-star"><div class="star" style="width: <%= e.SoSao/5*100%>%;"></div></div>
+                            </div>
+                            <p class="review">
+                                <%= e.NhanXet%>
+                            </p>
+                        </div>
+                        <hr style="width: 1030px;float: right">
+                    </div>
+                    <% })%>
+                </div>
+                <div class="add-reviews">
+                    <h2 style="font-weight: 700;">Add A Review</h2>
+                    <div style="margin-bottom: 50px" class="h2_gach"></div>
+                    <form method="post" action="/luudanhgia">
+                        <div class="form-group">
+                            <h5 style="width: 18%;float: left">Number of reviews: <%= soluongdanhgia.SoLuongDanhGia%></h5>
+                            <div class="box-star box-star-x">
+                                <div class="star-x" onmouseenter="checkStar(1)"><i class="fas fa-star"></i></div>
+                                <div class="star-x" onmouseenter="checkStar(2)"><i class="fas fa-star"></i></div>
+                                <div class="star-x" onmouseenter="checkStar(3)"><i class="fas fa-star"></i></div>
+                                <div class="star-x" onmouseenter="checkStar(4)"><i class="fas fa-star"></i></div>
+                                <div class="star-x" onmouseenter="checkStar(5)"><i class="fas fa-star"></i></div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="idsanpham" value="<%= sanpham.ID%>" required/>
+                        <input type="hidden" name="star" id="star" required/>
+                        <textarea class="form-control nhanxet" name="nhanxet" class="nhanxet" rows="8" cols="124" placeholder="You Review"></textarea>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control" name="fullname" placeholder="Full name" required/>
+                            </div>
+                            <div class="col">
+                                <input type="email" class="form-control" name="email" placeholder="Email" required/>
+                            </div>
+                        </div>
+                        <button class="btn submit" type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('footer')%>
+    <script type="text/javascript">
+        function checkStar(n) {
+            let s = document.getElementsByClassName("star-x");
+            for (let i=1;i<=s.length;i++){
+                s[i-1].classList.remove("active");
+            }
+            for (let i=1;i<=n;i++){
+                s[i-1].classList.add("active");
+            }
+            document.getElementById("star").value = n;
+        }
+    </script>
+</body>
+</html>

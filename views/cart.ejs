@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head')%>
+    <link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+    <%- include('menu')%>
+    <section class="sectional slide1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="breadcrumbb">
+                    <img src="/imgs/Breadcumd.jpg"/>
+                    <div class="breadcrumb_content">
+                        <h1>Cart</h1>
+                        <a href="/">Home</a>
+                        <span class="delimiter">
+                            / Cart
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sectional slide2">
+        <div class="container">
+            <div class="row">
+                <div class="slide2_left">
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="product_clear"><i class="far fa-times-circle"></i></td>
+                            <td class="product_img"><img src="<%= sanpham.AnhSP%>"/></td>
+                            <td class="product_name"><a href="/product/<%= sanpham.ID%>"><p><%= sanpham.TenSP%></p></a></td>
+                            <td class="product_price"><p><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sanpham.GiaSP);%></p></td>
+                            <td class="product_quantity"><p>1</p></td>
+                            <td class="product_subtotal"><p><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sanpham.GiaSP);%></p></td>
+                        </tr>
+                        <tr>
+                            <td class="actions" colspan="6" style="border: 1px solid #f5f5f5 !important;padding: 15px 0">
+                                <form class="form-inline">
+                                    <div class="form-group mb-2">
+                                        <label style="margin-left: 20px">Coupon:</label>
+                                    </div>
+                                    <div class="form-group mx-sm-3 mb-2">
+                                        <input type="password" class="form-control" id="inputPassword2" placeholder="Coupon code" required/>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mb-2 button_cart">Apply coupon</button>
+                                    <button type="submit" class="btn btn-primary mb-2 button_cart">Update cart</button>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="slide2_right">
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr class="abc">
+                            <th scope="col"></th>
+                            <th scope="col">Cart totals</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="abc">
+                            <td class="product_total">Subtotal</td>
+                            <td class="product_total-item"><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sanpham.GiaSP);%></td>
+                        </tr>
+                        <tr class="abc">
+                            <td class="product_total">Shipping</td>
+                            <td class="product_total-item"><div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Free shipping
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" required/>
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Flat rate
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" required/>
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        Flat sale
+                                    </label>
+                                </div></td>
+                        </tr>
+                        <tr class="abc">
+                            <td class="product_total">Total</td>
+                            <td class="product_total-item" style="color: #f86d72"><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sanpham.GiaSP);%></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button class="xyz" onclick="add(this)">
+                        Proceed to checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sectional slide3">
+        <div class="container">
+            <div class="order-success">
+                <i class="fas fa-check-circle"></i>
+                <h2>Order Success</h2>
+                <p>Thank you for your purchase !</p>
+            </div>
+        </div>
+    </section>
+    <%- include('footer')%>
+    <script type="text/javascript">
+        function add(e) {
+            $(".slide2").css({
+                "display":"none"
+            });
+            $(".slide3").css({
+                "display":"block"
+            });
+        }
+    </script>
+</body>
+</html>

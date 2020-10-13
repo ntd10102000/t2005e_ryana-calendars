@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head')%>
+    <link rel="stylesheet" href="/css/shop.css">
+</head>
+<body>
+    <%- include('menu')%>
+    <section class="sectional slide1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="breadcrumbb">
+                    <img src="/imgs/Breadcumd.jpg"/>
+                    <div class="breadcrumb_content">
+                        <h1>Shop</h1>
+                        <a href="/">Home</a>
+                        <span class="delimiter">
+                                <%= '/ '+nhaThietKeHienTai.TenNhaThietKe%>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sectional slide2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 slide2_left">
+                    <div class="input-group mb-3">
+                        <form method="get" action="/timkiem">
+                            <input type="text" class="form-control input_search" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2" name="search">
+                            <div class="input-group-append" style="width: 20%;">
+                                <button class="btn btn-outline-secondary button_search" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="categories">
+                        <h2 style="font-size: 16px;border-bottom:1px solid rgba(248,109,114,.25);">Categories</h2>
+                        <div style="margin-bottom: 30px" class="h2_gach"></div>
+                        <ul>
+                            <% danhmucs.map(function (e) { %>
+                                <li><a href="/category/<%= e.ID%>"><%= e.TenDanhMuc%> </a> (
+                                    <% coutdanhmucs.map(function (i) { %>
+                                        <%= i.SoLuong%>
+                                    <% })%>)
+                                </li>
+                            <% })%>
+                        </ul>
+                    </div>
+                    <div class="price">
+                        <h2 style="font-size: 16px;border-bottom:1px solid rgba(248,109,114,.25);">Price</h2>
+                        <div style="margin-bottom: 30px" class="h2_gach"></div>
+                        <form method="get" action="/timkiem">
+                            <input type="number" name="years" placeholder="Min"/>
+                            <span>-</span>
+                            <input type="number" name="years" placeholder="Max"/>
+                            <button class="btn btn-outline-secondary button_search" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="designer">
+                        <h2 style="font-size: 16px;border-bottom:1px solid rgba(248,109,114,.25);">Designer</h2>
+                        <div style="margin-bottom: 30px" class="h2_gach"></div>
+                        <ul>
+                            <% nhathietkes.map(function (e) { %>
+                                <li><a href="/designer/<%= e.ID%>"><%= e.TenNhaThietKe%></a>(
+                                    <% coutnhathietkes.map(function (i) { %>
+                                        <%= i.SoLuong%>
+                                    <% })%>)
+                                </li>
+                            <% })%>
+                        </ul>
+                    </div>
+                    <div class="sale">
+                        <img src="/imgs/Image-1-2.jpg">
+                    </div>
+                    <div class="tags">
+                        <h2 style="font-size: 16px;border-bottom:1px solid rgba(248,109,114,.25);">Tags</h2>
+                        <div style="margin-bottom: 30px" class="h2_gach"></div>
+                        <button class="btn btn-outline-secondary button_tags" type="button">classic</button>
+                        <button class="btn btn-outline-secondary button_tags" type="button">kids</button>
+                        <button class="btn btn-outline-secondary button_tags" type="button">classic</button>
+                        <button class="btn btn-outline-secondary button_tags" type="button">classic</button>
+                        <button class="btn btn-outline-secondary button_tags" type="button">classic</button>
+                        <button class="btn btn-outline-secondary button_tags" type="button">kids</button>
+                        <button class="btn btn-outline-secondary button_tags" type="button">classic</button>
+                        <button class="btn btn-outline-secondary button_tags" type="button">classic</button>
+                        <button class="btn btn-outline-secondary button_tags" type="button">classic</button>
+                    </div>
+                </div>
+                <div class="col-xl-9 slide2_right">
+                    <% sanphams.map(function (e) { %>
+                        <div class="col-xl-4 new_product">
+                            <div class="img_product">
+                                <img src="<%= e.AnhSP%>" class="image_1"/>
+                                <div class="product_hover">
+                                    <img src="<%= e.AnhSP%>" class="image"/>
+                                    <div class="product_hover_a">
+                                        <a href="/cart/<%= e.ID%>"><i class="fas fa-cart-arrow-down a"></i></a>
+                                        <a href="/product/<%= e.ID%>"><i class="fas fa-search a"></i></a>
+                                        <a href="#"><i class="far fa-heart a"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contact_product">
+                                <a href="/product/<%= e.ID%>"><%= e.TenSP%></a>
+                                <h3><i>by</i> <a href="/designer/<%= e.ID_NhaThietKe%>"> <%= e.TenNhaThietKe%></a></h3>
+                                <p><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(e.GiaSP);%></p>
+                            </div>
+                        </div>
+                    <% })%>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('footer')%>>
+</body>
+</html>

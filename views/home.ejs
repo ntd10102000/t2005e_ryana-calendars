@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head')%>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <%- include('menu')%>
+    <section class="sectional slide1">
+        <div class="container-fluid slide1_contant">
+            <div class="row">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators next">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/imgs/slider3-3.jpg" style="max-width: 100%"/>
+                            <div class="slide1_title">
+                                <h3>Best selling diary 2020</h3>
+                                <h2>40% discount on Diary<br/><i>by</i> <%= nhathietkes[1].TenNhaThietKe%></h2>
+                                <a href="/shop">Shop now</a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://wpbingosite.com/wordpress/bootin/wp-content/uploads/2019/05/slider3-2.jpg" style="max-width: 100%"/>
+                            <div class="slide1_title">
+                                <h3>Best selling calendar 2020</h3>
+                                <h2>40% discount on Calendar<br/><i>by</i> <%= nhathietkes[0].TenNhaThietKe%></h2>
+                                <a href="/shop">Shop now</a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://wpbingosite.com/wordpress/bootin/wp-content/uploads/2019/05/slider3-1.jpg" style="max-width: 100%"/>
+                            <div class="slide1_title">
+                                <h3>Best seller diary 2019</h3>
+                                <h2>40% discount on Diary<br/><i>by</i> <%= nhathietkes[2].TenNhaThietKe%></h2>
+                                <a href="/shop">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sectional slide2">
+        <div class="container-fluid" style="padding: 0 100px">
+            <div class="row">
+                <div class="item">
+                    <div class="item_content">
+                        <div class="item_icon">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                        <div class="item_name">
+                            <a href="/category/1"><h3>calendar</h3></a>
+                            <p>10 Products</p>
+                        </div>
+                    </div>
+                    <div class="item_content">
+                        <div class="item_icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="item_name">
+                            <a href="/category/2"><h3>diary</h3></a>
+                            <p>10 Products</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-10">
+                    <div class="row">
+                        <div class="new_arrivals h2">
+                            <h2>New arrivals</h2>
+                            <div class="h2_gach"></div>
+                            <% sanphams.map(function (e) { %>
+                            <div class="col-xl-3 new_product">
+                                <div class="img_product">
+                                    <img src="<%= e.AnhSP%>" class="image_1"/>
+                                    <div class="product_hover">
+                                        <img src="<%= e.AnhSP%>" class="image"/>
+                                        <div class="product_hover_a">
+                                            <a href="/cart/<%= e.ID%>"><i class="fas fa-cart-arrow-down a"></i></a>
+                                            <a href="/product/<%= e.ID%>"><i class="fas fa-search a"></i></a>
+                                            <a href="#"><i class="far fa-heart a"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/product/<%= e.ID%>"><%= e.TenSP%></a>
+                                <h3><i>by</i> <a href="#"> <%= e.TenNhaThietKe%></a></h3>
+                                <p><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(e.GiaSP);%></p>
+                            </div>
+                            <% })%>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="row">
+                        <div class="designer h2">
+                            <h2>Designer</h2>
+                            <div class="h2_gach"></div>
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators next" style="margin-bottom: -100px">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="designer_team">
+                                            <img src="/imgs/<%= nhathietkes[0].AnhNhaThietKe%>"/>
+                                            <a href="/designer/<%= nhathietkes[0].ID%>"> <%= nhathietkes[0].TenNhaThietKe%></a>
+                                            <h3>Art, Drama, Novel, Writer</h3>
+                                            <p><%= nhathietkes[0].ThongTinNhaThietKe%></p>
+                                            <ul>
+                                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            </ul>
+                                            <div style="border-bottom: 2px solid #f86d72;margin-top: 100px;width: 70px;margin-left: 62px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="designer_team">
+                                            <img src="<%= nhathietkes[1].AnhNhaThietKe%>"/>
+                                            <a href="/designer/<%= nhathietkes[1].ID%>"> <%= nhathietkes[1].TenNhaThietKe%></a>
+                                            <h3>Art, Drama, Novel, Writer</h3>
+                                            <p><%= nhathietkes[1].ThongTinNhaThietKe%></p>
+                                            <ul>
+                                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            </ul>
+                                            <div style="border-bottom: 2px solid #f86d72;margin-top: 100px;width: 70px;margin-left: 62px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="designer_team">
+                                            <img src="<%= nhathietkes[2].AnhNhaThietKe%>"/>
+                                            <a href="/designer/<%= nhathietkes[2].ID%>"> <%= nhathietkes[2].TenNhaThietKe%></a>
+                                            <h3>Art, Drama, Novel, Writer</h3>
+                                            <p><%= nhathietkes[2].ThongTinNhaThietKe%></p>
+                                            <ul>
+                                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            </ul>
+                                            <div style="border-bottom: 2px solid #f86d72;margin-top: 100px;width: 70px;margin-left: 62px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sectional slide3">
+        <div class="container-fluid" style="padding: 0 80px">
+            <div class="slide3_title">
+                <h2>
+                    Featured
+                    <div class="slide3_gach"></div>
+                </h2>
+            </div>
+            <div class="col-xl-12 featured">
+                <div class="row">
+                    <% featureds.map(function (e) { %>
+                    <div class="col-xl-3 featured_content">
+                        <img src="<%= e.AnhSP%>" class="image_1"/>
+                        <div class="product_hover" style="padding: 0 15px">
+                            <img src="<%= e.AnhSP%>" class="image"/>
+                            <div class="product_hover_a" style="left: 45% !important;">
+                                <a href="/cart/<%= e.ID%>"><i class="fas fa-cart-arrow-down a"></i></a>
+                                <a href="/product/<%= e.ID%>"><i class="fas fa-search a"></i></a>
+                                <a href="#"><i class="far fa-heart a"></i></a>
+                            </div>
+                        </div>
+                        <a href="#"><%= e.TenSP%></a>
+                        <h3><i>by</i> <a href="#"> <%= e.TenNhaThietKe%></a></h3>
+                        <p><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(e.GiaSP);%></p>
+                    </div>
+                    <% })%>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sectional slide4">
+        <div class="slide4_content">
+            <p>SPECIAL EVENTS IN OCTOBER</p>
+            <h2>Best Selling Calendar and Diary Exhibition,
+                <br/>
+                discount up to 50%</h2>
+            <a href="/shop">Explore Now</a>
+        </div>
+    </section>
+    <section class="sectional slide5">
+        <div class="container-fluid" style="padding: 0 80px">
+            <div class="slide3_title">
+                <h2>
+                    Blog Updates
+                    <div class="slide3_gach"></div>
+                </h2>
+            </div>
+            <div class="col-xl-4 slide5_left">
+                <% sanpham_blogs.map(function (e) { %>
+                <div class="blog_left">
+                    <img src="<%= e.AnhSP%>"/>
+                    <div class="date_time">
+                        <p>May 30, 2020 / <a href="#"> Life Style</a></p>
+                    </div>
+                    <h2><a href="#"> <%= e.TenSP%></a></h2>
+                    <div class="by">
+                        <h3><i>by</i> <a href="#"> <%= e.TenNhaThietKe%></a></h3>
+                    </div>
+                </div>
+                <% })%>
+            </div>
+            <div class="col-xl-4 slide5_mid">
+                <img src="imgs/Image-4-720x484.jpg"/>
+                <div class="date_time">
+                    <p>May 30, 2018 / <a href="#"> Life Style</a></p>
+                </div>
+                <h2><a href="#"><%= sanpham_blogs[2].TenSP%></a></h2>
+                <div class="by">
+                    <h3><i>by</i> <a href="#"> <%= sanpham_blogs[2].TenNhaThietKe%></a></h3>
+                </div>
+                <div class="summary"><%= sanpham_blogs[2].MoTaSP%></div>
+            </div>
+            <div class="col-xl-4 slide5_right">
+                <form method="post" action="#">
+                    <div class="slide5_right_title">Stay In Touch with Our Updates</div>
+                    <div class="slide5_right_subtitle">Newsletter to get in touch</div>
+                    <input type="email" name="your-email" value="@" class="input-group mb-2 mr-sm-2 sub">
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="sectional slide6">
+        <div class="container-fluid" style="padding: 0 80px">
+            <div class="col-xl-4 slide6_content">
+                <img src="imgs/policy-1.png">
+                <div class="slide6_title">
+                    <a href="#"><h2>Free Shipping</h2></a>
+                    <p>Select bettwen awide range of texbook and media.</p>
+                </div>
+            </div>
+            <div class="col-xl-4 slide6_content">
+                <img src="imgs/policy-2.png">
+                <div class="slide6_title">
+                    <a href="#"><h2>Fast Delivery</h2></a>
+                    <p>Enjoy free shipping and our fast delivery service.</p>
+                </div>
+            </div>
+            <div class="col-xl-4 slide6_content">
+                <img src="imgs/policy-3.png">
+                <div class="slide6_title">
+                    <a href="#"><h2>Discounted Free</h2></a>
+                    <p>Get nice discount on our top rated product every sunday.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('footer')%>
+</body>
+</html>
